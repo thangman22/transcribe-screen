@@ -2,7 +2,7 @@
 
 A simple, real-time speech transcription and translation application built with vanilla JavaScript and Tailwind CSS.
 
-![Transcribe Screen Demo](screen-shot.png)
+![Transcribe Screen Demo](screenshot.gif)
 
 ## Features
 
