@@ -1,4 +1,4 @@
-# Transcribe Screen
+# Realtime translated Caption Screen
 
 A simple, real-time speech transcription and translation application built with vanilla JavaScript and Tailwind CSS.
 

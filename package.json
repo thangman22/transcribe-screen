@@ -1,7 +1,7 @@
 {
-  "name": "transcribe-screen",
+  "name": "realtime-translated-caption-screen",
   "version": "1.0.0",
-  "description": "",
+  "description": "A real-time speech transcription and translation application with live captioning",
   "type": "module",
   "main": "script.js",
   "scripts": {
