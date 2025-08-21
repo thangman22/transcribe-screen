@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcript Screen</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div id="start-screen">
+        <button id="start-button">Start Transcription</button>
+    </div>
+
+    <div id="app-container" class="hidden">
+        <div id="controls">
+            <div class="controls-container">
+                <div class="control-buttons">
+                    <button id="settings-button" class="settings-btn" aria-label="Open language and layout settings">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="main-container">
+            <div class="panel" id="original-panel">
+                <p id="original-transcript"></p>
+            </div>
+            <div class="panel" id="translated-panel">
+                <p id="translated-transcript"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Language Settings Modal -->
+    <dialog id="language-modal" class="settings-dialog">
+        <div class="dialog-content">
+            <div class="dialog-header">
+                <h2>Settings</h2>
+                <button id="close-modal" class="close-btn" aria-label="Close settings">&times;</button>
+            </div>
+            <div class="dialog-body">
+                <div class="language-option">
+                    <label for="recognition-language-select">Recognition Language:</label>
+                    <select id="recognition-language-select" class="language-select">
+                        <option value="">Loading...</option>
+                    </select>
+                </div>
+                <div class="language-option">
+                    <label for="translation-language-select">Translate to:</label>
+                    <select id="translation-language-select" class="language-select">
+                        <option value="">Loading...</option>
+                    </select>
+                </div>
+                <div class="language-option">
+                    <label for="layout-select">Layout:</label>
+                    <select id="layout-select" class="language-select">
+                        <option value="vertical">Vertical Split</option>
+                        <option value="horizontal">Horizontal Split</option>
+                    </select>
+                </div>
+            </div>
+            <div class="dialog-footer">
+                <button id="apply-settings" class="apply-btn">Apply Settings</button>
+            </div>
+        </div>
+    </dialog>
+
+    <script type="module" src="/src/script.js"></script>
+</body>
+</html>

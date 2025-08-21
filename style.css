@@ -1,0 +1,286 @@
+@import "tailwindcss";
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+#start-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#start-button {
+    font-size: 2rem;
+    padding: 20px 40px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border-radius: 10px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+}
+
+#controls {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 10;
+}
+
+.controls-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.control-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.control-btn, .settings-btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.control-btn:hover, .settings-btn:hover {
+    background-color: #555;
+}
+
+.control-btn svg, .settings-btn svg {
+    display: block;
+}
+
+.layout-indicator {
+    font-size: 0.8rem;
+    color: #999;
+    text-align: center;
+    padding: 4px 8px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+#main-container {
+    display: flex;
+    flex-grow: 1;
+    padding-top: 60px; /* Space for controls */
+    min-height: 0; /* allow children to scroll in flex layout */
+}
+
+/* Default vertical layout (side by side) */
+#main-container.vertical {
+    flex-direction: row;
+}
+
+/* Horizontal layout (stacked) */
+#main-container.horizontal {
+    flex-direction: column;
+}
+
+.panel {
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100%;
+    min-height: 0; /* ensure panel can shrink to enable overflow */
+    overflow-y: auto;
+    font-size: 2.5rem;
+    line-height: 1.4;
+}
+
+/* Vertical layout styles */
+#main-container.vertical .panel {
+    width: 50%;
+}
+
+#main-container.vertical #original-panel {
+    border-right: 1px solid #444;
+}
+
+/* Horizontal layout styles */
+#main-container.horizontal .panel {
+    width: 100%;
+    height: 50%;
+}
+
+#main-container.horizontal #original-panel {
+    border-bottom: 1px solid #444;
+}
+
+#original-transcript, #translated-transcript {
+    margin: 0;
+}
+
+/* Dialog Styles */
+.settings-dialog {
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    background-color: #1a1a1a;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    color: white;
+    /* Ensure dialog is properly positioned */
+    margin: auto;
+    /* Remove default dialog styling */
+    background: #1a1a1a;
+}
+
+.settings-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+}
+
+/* Ensure dialog is responsive */
+@media (max-width: 600px) {
+    .settings-dialog {
+        width: 95%;
+        max-width: none;
+        margin: 10px;
+    }
+}
+
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid #333;
+}
+
+.dialog-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    background-color: #333;
+    color: white;
+}
+
+.dialog-body {
+    padding: 24px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.language-option {
+    margin-bottom: 20px;
+}
+
+.language-option:last-child {
+    margin-bottom: 0;
+}
+
+.language-option label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #ccc;
+}
+
+.language-select {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #333;
+    color: white;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+    /* Remove default arrow */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Add custom arrow */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6,9 12,15 18,9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px; /* Make room for custom arrow */
+}
+
+.language-select:focus {
+    outline: none;
+    border-color: #007acc;
+}
+
+.dialog-footer {
+    padding: 20px 24px;
+    border-top: 1px solid #333;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.apply-btn {
+    background-color: #007acc;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.apply-btn:hover {
+    background-color: #005a9e;
+}
+
+.apply-btn:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
